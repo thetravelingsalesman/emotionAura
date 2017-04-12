@@ -1,0 +1,25 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<!--     <link rel="stylesheet" href="static/bootstrap-darkly.min.css" />
+ -->
+    <!-- outside vendor files -->
+    <script src="libraries/jquery-2.1.4.js"></script>
+    <script src="libraries/d3.min.js"></script>
+    <script src="libraries/p5.js"></script>
+
+
+
+    <!-- demo files -->
+    <script src="static/demo/js/affectiva.js"></script>
+    <script src="https://download.affectiva.com/js/3.1/affdex.js"></script>
+    
+</head>
+
+<body class="container">
+
+    <div id="facevideo-node"></div>
+      
+
+</body>
+</html>
