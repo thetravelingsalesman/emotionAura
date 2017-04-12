@@ -7,6 +7,7 @@ var checkboxMetaData;
 var checkboxFeaturePoints;
 var checkboxBalls;
 var checkboxRadialAura;
+var checkboxEmoji;
 
 var emotionRecords ;
 
@@ -35,6 +36,9 @@ checkboxBalls.checked(false); // passing in an arg sets its state?
 
 checkboxRadialAura = createCheckbox('Radial Aura');
 checkboxRadialAura.checked(true); // passing in an arg sets its state?
+
+checkboxEmoji = createCheckbox('Emoji');
+checkboxEmoji.checked(false); // passing in an arg sets its state?
 
 
 }
@@ -81,6 +85,10 @@ strokeWeight(5);
 
 			} // end radial checkbox
 			if (checkboxMetaData.checked()) { displayMetaData(faceData);}
+			
+
+			if (checkboxEmoji.checked()) { displayEmoji(faceData);}
+
 
 		}
 
@@ -130,18 +138,14 @@ function displayMetaData(faceData){
 	var displacement ={'x':0 , 'y':-200};
 
 	fill(255,255,255,150);
-	rect(nose.x + displacement.x - 5  ,nose.y + displacement.y ,130,80);
+	rect(nose.x + displacement.x - 5  ,nose.y + displacement.y ,130,65);
 	fill(0,0,0);
 	text("age: " + metaData.age, nose.x,nose.y  + displacement.y + 25);
 	text("sex: " + metaData.gender, nose.x,nose.y + displacement.y  + 40 );
 	text("ethnicity: " + metaData.ethnicity, nose.x,nose.y + displacement.y + 55 );
-	text("emoji: " + faceData.emojis.dominantEmoji , nose.x, nose.y +displacement.y + 70 );
+	//text("emoji: " + faceData.emojis.dominantEmoji , nose.x, nose.y +displacement.y + 70 );
 }
 
-// function displayEmoji(faceData){
-
-// 	text("emoji: " + faceData.emojis.dominantEmoji , nose.x, nose.y +displacement.y + 70 )
-// }
 
 function getFaceBounds(featurePointsObject){
 	var topLeftX =featurePointsObject[0].x;
@@ -240,6 +244,7 @@ function makeAuraTimeStep(faceData,  relativeTime ,centerX,centerY){
 
 
 function colorKey(){
+	textSize(12);
 	fill(255,255,255,180);
 	rect(0,0, 110,160);
 	for(var i =0; i<feelings.length; i++){
@@ -249,3 +254,15 @@ function colorKey(){
 	}
 }
 
+
+function displayEmoji(faceData){
+	fill(0);
+	var size =50;
+	// var featurePoints = faceData['featurePoints'];
+	// var nose = getNoseTip(featurePoints);
+	// var metaData = faceData['appearance'];
+	// var eyeDistance = faceData['measurements'].interocularDistance;
+
+	textSize(size);
+	text(faceData.emojis.dominantEmoji , width - 1.5*size, size );
+}
